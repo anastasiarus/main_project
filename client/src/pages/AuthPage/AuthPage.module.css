@@ -1,0 +1,53 @@
+.wrapper {
+    display: flex;
+    justify-content: center; 
+}
+.card {
+    position: absolute;
+    width: 400px;
+    height: 350px;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: pink;
+}
+
+.cardContent{
+    justify-content: center; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.cardTitle {
+    padding-bottom: 15px;
+    display: block;
+    margin: 0 auto;
+    text-align:center;
+    font-weight: bold
+}
+
+.input {
+    padding: 8px;
+}
+
+.validate {
+    margin-left: 10px
+}
+
+.cardAction {
+    justify-content: center;
+    margin-top:20px;
+    margin-left: 130px;
+}
+.btnLogin {
+    padding: 6px;
+    margin: 5px;
+    color: black;
+    border: 1px solid ;
+}
+.btnReg {
+    padding: 6px;
+    margin: 5px;
+    color: black;
+    border: 1px solid;
+}

@@ -1,6 +1,6 @@
 {
     "port": 5000,
-    "mongoUri": "mongodb+srv://Anastasia:nastya03@cluster0.kykpl.mongodb.net/mainproject?retryWrites=true&w=majority", 
+    "mongoUri": "mongodb+srv://Anastasia:nastya03@cluster0.kykpl.mongodb.net/app?retryWrites=true&w=majority", 
     "baseUrl": "http://localhost:5000",
     "jwtSecret": "nastya"   
 }
