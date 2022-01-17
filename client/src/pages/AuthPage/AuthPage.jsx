@@ -44,12 +44,19 @@ export const AuthPage = () => {
         <div className={classes.cardContent}>
           <span className={classes.cardTitle}>АВТОРИЗАЦИЯ</span>
           <div className={classes.input}>
-          <label htmlFor="email">Email:</label>
-          <input id="email" type="email" name="email" className={classes.validate} onChange={changeHandler} />
-          
+          <label htmlFor="text">Ваше имя:</label>
+          <input id="firstName" type="text" name="firstName" className={classes.validate} onChange={changeHandler} />
         </div>
         <div className={classes.input}>
-        <label htmlFor="password">Password:</label>
+          <label htmlFor="text">Ваша фамилия:</label>
+          <input id="lastName" type="text" name="lastName" className={classes.validate} onChange={changeHandler} />
+        </div>
+          <div className={classes.input}>
+          <label htmlFor="email">Почта:</label>
+          <input id="email" type="email" name="email" className={classes.validate} onChange={changeHandler} />
+        </div>
+        <div className={classes.input}>
+        <label htmlFor="password">Пароль:</label>
           <input id="password" type="password" name="password"  className={classes.validate} onChange={changeHandler}/>
         </div>
         </div>
