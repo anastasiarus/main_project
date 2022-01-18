@@ -18,7 +18,7 @@ const Header = () =>{
 
     return (
     <header className={classes.header}>
-       <img className={classes.image} src='https://img.icons8.com/ios/344/home-page.png'></img>
+       <img className={classes.image} src='https://img.icons8.com/material-rounded/344/ffffff/home-page.png'></img>
         <div className={classes.log}><a href="/" onClick={logoutHandler}>Выйти</a></div>
         
     </header>

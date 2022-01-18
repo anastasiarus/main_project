@@ -6,7 +6,7 @@ import classes from './Messages.module.css'
 const Messages = () =>{
     return (
     <div className={classes.main}>
-        Привет
+       <p>Сообщения</p>
     </div>
     )
 }

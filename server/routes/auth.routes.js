@@ -1,15 +1,16 @@
-
 const {Router} = require('express')
 const bcrypt = require('bcryptjs')
 const config = require('config')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/users')
-const router = Router()
+
+
+const authRouter = Router()
 
 
 // /api/auth/register
-router.post(
+authRouter.post(
   '/register',
   [
     check('email', 'Некорректный email').isEmail(),
@@ -52,7 +53,7 @@ router.post(
 })
 
 // /api/auth/login
-router.post(
+authRouter.post(
   '/login',
   [
     check('email', 'Введите корректный email').isEmail(),
@@ -86,7 +87,7 @@ router.post(
     const token = jwt.sign(
       { userId: user.id },
       config.get('jwtSecret'),
-      { expiresIn: '1h' }
+      { expiresIn: '30d' }
     )
 
     res.json({ token, userId: user.id })
@@ -97,4 +98,4 @@ router.post(
 })
 
 
-module.exports = router
+module.exports = authRouter

@@ -6,6 +6,9 @@ import Header from '../../components/Header/Header';
 import Messages from "../../components/Messages/Messages";
 import { Routes, Route } from "react-router-dom"; 
 import Setting from "../../components/Setting/Setting";
+import Music from "../../components/Music/Music";
+import Friends from "../../components/Friends/Friends";
+import News from "../../components/News/News";
 
 export const MainPage = () => {
     return (
@@ -16,6 +19,9 @@ export const MainPage = () => {
          <Routes>
           <Route  path="/profile"  element={<Profile />}/>
           <Route  path="/messages"  element={<Messages />}/>
+          <Route  path="/friends"  element={<Friends />}/>
+          <Route  path="/news"  element={<News />}/>
+          <Route  path="/music"  element={<Music />}/>
           <Route  path="/setting"  element={<Setting />}/>
         </Routes> 
       </div>
