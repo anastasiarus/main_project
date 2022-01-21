@@ -11,7 +11,7 @@ const Friends = () => {
       url: "http://localhost:5000/api/friends",
       method: "GET",
       data: {
-        id: "61e7e142c2e7e99a72dc7d9e",
+        id: "61e906356354c583e77e58d2",
       },
     });
     setFriends(data);

@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect} from "react";
 import classes from "./Profile.module.css";
-import {AuthContext} from "../../context/AuthContext"
+//import {AuthContext} from "../../context/AuthContext"
 import axios from "axios";
 import ava from "../../images/users.png";
 import ProfileStatus from "./ProfileStatus";
 
 const Profile = () => {
   const [profile, setProfile] = useState([]);
-  const {token} = useContext(AuthContext)
+  //const {token} = useContext(AuthContext)
 
   const getProfileInfo = async () => {
     const { data } = await axios({
@@ -16,7 +16,7 @@ const Profile = () => {
       data: {
         id: "61e906356354c583e77e58d2",
       },
-      Authorization: `Bearer ${token}`
+      //Authorization: `Bearer ${token}`
     });
     setProfile(data);
   };
@@ -25,7 +25,7 @@ const Profile = () => {
   }, []);
 
   //console.log(token)
-  //console.log('данные', profile)
+  console.log('данные', profile)
   //console.log('имя', profile.firstName)
 
   return (

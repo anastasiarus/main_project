@@ -1,8 +1,9 @@
 const  {Schema, model}  = require ("mongoose");
 
 const schema = new Schema({
-    firstName: { type: String, allowNull: false},
-    lastName: { type: String, allowNull: false}
+    friendId: {type: Number},
+    firstName: { type: String, allowNull: false, ref: 'User'},
+    lastName: { type: String, allowNull: false, ref: 'User'}
 });
 
 module.exports = model("Friends", schema);

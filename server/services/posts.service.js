@@ -13,9 +13,10 @@ class PostsService {
     if (!userPosts == []) {
       console.log("Нет постов")
     }
-    const allPosts = userPosts.map(post => User.findById(post.id).then(doc => {
-      allPosts.push(doc);
-    }))
+
+    const allPosts = await Promise.all(
+      user.posts.map((id) => User.findById(id))
+    );
     console.log('Все посты', allPosts)
     return allPosts;
   }
@@ -23,11 +24,9 @@ class PostsService {
     async addPosts (id, postId) {
     //console.log(id)
     const user = await User.findById(id);
-    //const friend = await User.findById(friendId);
     if (!user) {
         throw new Error( 'Пользователь не найден')
     }
-
     const userPosts = user.posts
     userPosts.push(postId);
     const postsArray = await User.updateOne({posts: userPosts})

@@ -20,7 +20,7 @@ authRouter.post(
   async (req, res) => {
   try {
 
-    console.log(req.body)
+    //console.log(req.body)
 
     const errors = validationResult(req)
 
@@ -43,8 +43,6 @@ authRouter.post(
 
     const user = new User({ email, password: hashedPassword, firstName, lastName })
     await user.save()
-    
-    console.log('ghbcdtyfvngv', user)
 
     return res.status(201).json({ message: 'Пользователь создан' })
 
