@@ -1,27 +1,46 @@
-import React, { useState, useEffect, /* useContext */ } from 'react'
-import classes from './Profile.module.css'
-//import {AuthContext} from "../../context/AuthContext"
-//import MyPosts from './MyPosts/MyPosts'
-import axios from 'axios';
+import React, { useState, useEffect, useContext} from "react";
+import classes from "./Profile.module.css";
+import {AuthContext} from "../../context/AuthContext"
+import axios from "axios";
+import ava from "../../images/users.png";
+import ProfileStatus from "./ProfileStatus";
 
 const Profile = () => {
-     
-  const [profile, setProfile] = useState([])
-  //const {token} = useContext(AuthContext)
+  const [profile, setProfile] = useState([]);
+  const {token} = useContext(AuthContext)
 
   const getProfileInfo = async () => {
-
-
-    const {data} = await axios({
-      url:'http://localhost:5000/api/profile',
-      method:"POST",
-      data:{
-        id:"61e6bfd605b8154feae067db"
-      }
+    const { data } = await axios({
+      url: "http://localhost:5000/api/profile",
+      method: "POST",
+      data: {
+        id: "61e906356354c583e77e58d2",
+      },
+      Authorization: `Bearer ${token}`
     });
     setProfile(data);
+  };
+  useEffect(() => {
+    getProfileInfo();
+  }, []);
 
-   /*  const data = await fetch('http://localhost:5000/api/profile', {
+  //console.log(token)
+  //console.log('данные', profile)
+  //console.log('имя', profile.firstName)
+
+  return (
+    <div className={classes.main}>
+      <img className={classes.ava} src={ava} alt="" /> <br />
+      <p className={classes.name} >{`${profile.firstName} ${profile.lastName}`}</p>
+      <ProfileStatus />
+    
+    </div>
+  );
+};
+
+export default Profile;
+
+/*  const data = await fetch('http://localhost:5000/api/profile', {
 
       method: 'POST',
       headers: {
@@ -34,7 +53,7 @@ const Profile = () => {
     })
     console.log(data)
     setProfile(data.json()) */
-    /* .then((res) => {
+/* .then((res) => {
       if (!res.ok) {
         const response = res.json()
         throw new Error(  response.message ||  'Что-то пошло не так');
@@ -44,34 +63,6 @@ const Profile = () => {
     .then((response) => response.json())
     .then(profileInfo => setProfile(profileInfo))
     .catch((e)=> console.log(e)) */
-    
-  }
-
-    useEffect(() => {
-      getProfileInfo()
-    }, [])
-
-   console.log('данные', profile)
-   console.log('имя', profile.firstName)
-
-
-     return (
-    <div className={classes.main}>
-      <p>Привет, {`${profile.firstName}`}</p>
-
-       {/*  <div>
-            <img className={classes.picture} src="https://s1.1zoom.ru/big3/729/354584-admin.jpg" alt="" />
-        </div>
-        <div>describtion</div>
-        <MyPosts /> */}
-        </div>
-       
-    )  
-}
-
-export default Profile;
-
-
 
 /* const [users, setUsers] = useState([])
   
@@ -99,7 +90,7 @@ export default Profile;
     </div> 
   ) */
 
-  /* const fetchInfo = () => {
+/* const fetchInfo = () => {
     fetch('http://localhost:5000/api/profile')
     .then(async (res) => {
       if (res.status !== 200) {

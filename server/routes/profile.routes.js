@@ -7,7 +7,7 @@ const profileRouter = Router();
 const profileController = new ProfileController();
 
 profileRouter.post('/', (req, res) => profileController.getProfileInfo(req, res));
-//profileRouter.get('/', auth, (req, res) => profileController.getProfileInfo(req, res));
+//profileRouter.post('/', auth, (req, res) => profileController.getProfileInfo(req, res));
 
 module.exports = profileRouter
 

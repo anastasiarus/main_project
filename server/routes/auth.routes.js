@@ -39,13 +39,14 @@ authRouter.post(
       return res.status(400).json({ message: 'Такой пользователь уже существует' })
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12)
+    const hashedPassword = await bcrypt.hash(password, 6)
 
     const user = new User({ email, password: hashedPassword, firstName, lastName })
-
     await user.save()
+    
+    console.log('ghbcdtyfvngv', user)
 
-    res.status(201).json({ message: 'Пользователь создан' })
+    return res.status(201).json({ message: 'Пользователь создан' })
 
   } catch (e) {
     res.status(500).json({ message: 'Что-то пошло не так' })

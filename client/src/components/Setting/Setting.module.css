@@ -3,14 +3,14 @@
     margin-left: 10px;
 }
 
-p{
+.string {
      margin-left: 10px; 
     color: white;
     display: inline-block;
 }
 
 
-img {
+.icon {
     width: 25px;
     height: 25px;
 }

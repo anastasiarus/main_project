@@ -1,0 +1,43 @@
+/* .content {
+    background-color: #fce4ec;
+    margin-left: 5px;
+} */
+.main {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.title {
+    color: white;
+}
+
+.posts {
+    margin-top: 5px;
+}
+
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 5px;
+    border: 1px solid #F896A6;
+    border-radius: 8px;
+    box-shadow: 0 0 40px 40px #F896A6 inset, 0 0 0 0 #F896A6;
+    color: white;
+    transition: .15s ease-in-out; 
+  }
+
+.btn:hover {
+    box-shadow: 0 0 0 0 #F896A6 inset, 0 0 0 0 #F896A6; 
+    color: #F896A6;
+  } 
+
+.textarea {
+    width:500px;
+    resize: vertical;
+    background-color: white;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    height:150px;
+}

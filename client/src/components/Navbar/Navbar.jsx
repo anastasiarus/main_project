@@ -9,7 +9,7 @@ const Navbar = () =>{
         <div className={classes.item}><Link to='profile' >Профиль</Link></div>
         <div className={classes.item} ><Link to='/messages'>Сообщения</Link></div>
         <div className={classes.item}><Link to='/friends'>Друзья</Link></div>
-        <div className={classes.item} ><Link to='/news'>Новости</Link></div>
+        <div className={classes.item} ><Link to='/posts'>Посты</Link></div>
         <div className={classes.item}><Link to='/music'>Музыка</Link></div>
         <div className={classes.item}><Link to='/setting'>Настройки</Link></div>
     </nav>

@@ -10,7 +10,7 @@ class ProfileController {
 
   async getProfileInfo(req, res) {
     try {
-      console.log(req)
+      //console.log(req)
         const profileInfo = await this.service.getProfileInfo(req.body.id);
         return res.status(200).json(profileInfo);
     } catch (e) {

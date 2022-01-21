@@ -36,7 +36,6 @@ export const AuthPage = () => {
     } catch (e) {console.log(e.message)}
   }
 
-
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.title}>Авторизация</h1>
