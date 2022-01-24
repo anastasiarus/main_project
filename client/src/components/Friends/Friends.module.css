@@ -5,9 +5,16 @@
 
 .title {
     color: white;
+    padding-bottom: 10px;
 }
 
 
 .emptyArr {
     color: white;
+}
+
+.friends {
+    color: white;
+    list-style-type: none;
+    margin: 5px;
 }

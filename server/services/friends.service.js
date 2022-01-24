@@ -2,6 +2,16 @@ const User = require('../models/users')
 
 class FriendsService {
 
+
+  async getAllUsers() {
+    //console.log(id)
+    const user = await User.find();
+    if (!user) {
+      throw new Error('Пользователи не найдены')
+    }
+    return user;
+  }
+
   async getFriends(id) {
     //console.log(id)
     const user = await User.findById(id);

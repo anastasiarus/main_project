@@ -4,15 +4,14 @@ import axios from "axios";
 
 const Friends = () => {
   const [friends, setFriends] = useState([]);
-  //const {token} = useContext(AuthContext)
 
   const getFriends = async () => {
     const { data } = await axios({
       url: "http://localhost:5000/api/friends",
       method: "GET",
-      data: {
+      /* data: {
         id: "61e906356354c583e77e58d2",
-      },
+      }, */
     });
     setFriends(data);
   };
@@ -20,6 +19,7 @@ const Friends = () => {
     getFriends();
   }, []);
 
+   
   console.log("друзья", friends);
 
   return (
@@ -31,7 +31,9 @@ const Friends = () => {
         </div>
       ) : (
         <div>
-          <p className={classes.friends}>{`${friends}`}</p>
+           { friends.map(friend => (
+              <li className={classes.friends} key={friend._id}>{friend.firstName} {friend.lastName} </li>
+            ))}
         </div>
       )}
     </div>
@@ -39,3 +41,35 @@ const Friends = () => {
 };
 
 export default Friends;
+
+
+
+/* // Добавление пользователя
+   async function CreateUser(userName, userAge) {
+  
+    const response = await fetch("api/users", {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+            name: userName,
+            age: parseInt(userAge, 10)
+        })
+    });
+    if (response.ok === true) {
+        const user = await response.json();
+        reset();
+        document.querySelector("tbody").append(row(user));
+    }
+}
+
+// Удаление пользователя
+async function DeleteUser(id) {
+    const response = await fetch("/api/users/" + id, {
+        method: "DELETE",
+        headers: { "Accept": "application/json" }
+    });
+    if (response.ok === true) {
+        const user = await response.json();
+        document.querySelector("tr[data-rowid='" + user._id + "']").remove();
+    }
+} */

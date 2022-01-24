@@ -6,6 +6,7 @@ import axios from "axios";
 const MyPosts = () => {
   const [posts, setPosts] = useState([]);
   //const {token} = useContext(AuthContext)
+
   const getPosts = async () => {
     const { data } = await axios({
       url: "http://localhost:5000/api/posts",
@@ -20,6 +21,38 @@ const MyPosts = () => {
     getPosts();
   }, []);
 
+  const addPost = async (title, descText) => {
+    const { body } = await axios({
+      url: "http://localhost:5000/api/posts",
+      method: "POST",
+      body: JSON.stringify({
+        title: title,
+        descText: descText,
+      }),
+      /* if (response.ok === true) {
+      const user = await response.json();
+      reset();
+  } */
+    });
+    setPosts(body);
+  };
+  useEffect(() => {
+    addPost();
+  }, []);
+ 
+
+/*// Удаление пользователя
+async function DeleteUser(id) {
+    const response = await fetch("/api/users/" + id, {
+        method: "DELETE",
+        headers: { "Accept": "application/json" }
+    });
+    if (response.ok === true) {
+        const user = await response.json();
+        document.querySelector("tr[data-rowid='" + user._id + "']").remove();
+    }
+} */
+
   
 
   const postsElements = posts.map((p) => (
@@ -27,10 +60,10 @@ const MyPosts = () => {
   ));
   const newPostElement = React.createRef();
 
-  const addPost = () => {
+ /*  const addPost = () => {
     const postMessage = newPostElement.current.value;
     alert(postMessage);
-  };
+  }; */
 
   console.log("посты", posts);
 

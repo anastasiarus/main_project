@@ -8,6 +8,16 @@ class FriendsController {
     this.service = new FriendsService();
   }
 
+  async getAllUsers(req, res) {
+    try {
+      const users = await this.service.getAllUsers(req.body);
+      return res.status(200).json(users);
+    } catch (e) {
+      console.log(e);
+    }
+    return null;
+  }
+
   async getFriends(req, res) {
     try {
       //console.log(req)

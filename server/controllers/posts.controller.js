@@ -10,11 +10,6 @@ class PostsController {
 
   async getPosts(req, res) {
     try {
-      //console.log(req)
-      const id = req.body;
-      if (!id) {
-        throw new Error( 'Что-то пошло не так')
-      }
       const userPost = await this.service.getPosts(req.body.id);
       return res.status(200).json(userPost);
     } catch (e) {
