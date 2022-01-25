@@ -48,7 +48,6 @@ class FriendsService {
     if (!user) {
       throw new Error('Пользователь не найден')
     }
-
     const userFriends = user.friends
     userFriends.remove(friendId);
     const friendsArray = await User.updateOne({ friends: userFriends })

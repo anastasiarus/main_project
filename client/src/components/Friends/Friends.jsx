@@ -19,6 +19,21 @@ const Friends = () => {
     getFriends();
   }, []);
 
+ /*  const addPost = async () => {
+    const response = await axios({
+      url: "http://localhost:5000/api/friends",
+      method: "POST",
+      data: {
+        id: "61e906356354c583e77e58d2",
+      },
+    });
+    //alert(response.data.message)
+    console.log('ответ', response.data.message)
+  };
+  useEffect(() => {
+    addPost();
+  }, []); 
+ */
    
   console.log("друзья", friends);
 
@@ -33,7 +48,10 @@ const Friends = () => {
         <div>
            { friends.map(friend => (
               <li className={classes.friends} key={friend._id}>{friend.firstName} {friend.lastName} </li>
-            ))}
+           ))}
+           {/* <button className={classes.btn} onClick={addPost}>
+            Добавить
+          </button> */}
         </div>
       )}
     </div>

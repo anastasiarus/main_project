@@ -26,12 +26,12 @@ const Profile = () => {
 
   //console.log(token)
   console.log('данные', profile)
-  //console.log('имя', profile.firstName)
 
   return (
     <div className={classes.main}>
       <img className={classes.ava} src={ava} alt="" /> <br />
       <p className={classes.name} >{`${profile.firstName} ${profile.lastName}`}</p>
+      <p className={classes.name} >{` Вы можете напистаь мне сюда: ${profile.email}`}</p>
       <ProfileStatus />
     
     </div>

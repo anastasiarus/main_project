@@ -1,7 +1,4 @@
-/* .content {
-    background-color: #fce4ec;
-    margin-left: 5px;
-} */
+
 .main {
     margin-top: 10px;
     margin-left: 10px;
@@ -32,7 +29,7 @@
   } 
 
 .textarea {
-    width:500px;
+    width:700px;
     resize: vertical;
     background-color: white;
     padding:15px;

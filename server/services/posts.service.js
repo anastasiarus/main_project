@@ -1,51 +1,36 @@
-const User = require('../models/users')
+
+const Post = require('../models/posts')
 
 class PostsService {
 
-  async getPosts (id) {
-    //console.log(id)
-    const user = await User.findById(id);
-    if (!user) {
-        throw new Error( 'Пользователь не найден')
-    }
-
-    const userPosts = user.posts
-    if (!userPosts == []) {
-      console.log("Нет постов")
-    }
-
-    const allPosts = await Promise.all(
-      user.posts.map((id) => User.findById(id))
-    );
-    console.log('Все посты', allPosts)
-    return allPosts;
+  async getPosts () {
+      const post = await Post.find();
+      if (!post) {
+        throw new Error('Пост не найден')
+      }
+      return post;
   }
 
-    async addPosts (id, postId) {
-    //console.log(id)
-    const user = await User.findById(id);
-    if (!user) {
-        throw new Error( 'Пользователь не найден')
-    }
-    const userPosts = user.posts
-    userPosts.push(postId);
-    const postsArray = await User.updateOne({posts: userPosts})
-    return postsArray;
+  async addPosts (descText) {
+      const post = new Post({descText})
+      await post.save()
+      console.log('Пост добавлен')
   } 
-
-  async deletePosts (id, postId) {
-    //console.log(id)
-    const user = await User.findById(id);
-    if (!user) {
-        throw new Error( 'Пользователь не найден')
-    }
-
-    const userPosts = user.posts
-    userPosts.remove(postId);
-    const postsArray = await User.updateOne({posts: userPosts})
-    console.log('Пост удален')
-    return postsArray;
-  } 
+    
 } 
 
 module.exports = PostsService 
+
+/* async deletePosts (id, postId) {
+  //console.log(id)
+  const user = await User.findById(id);
+  if (!user) {
+      throw new Error( 'Пользователь не найден')
+  }
+
+  const userPosts = user.posts
+  userPosts.remove(postId);
+  const postsArray = await User.updateOne({posts: userPosts})
+  console.log('Пост удален')
+  return postsArray;
+}  */

@@ -5,67 +5,41 @@ import axios from "axios";
 
 const MyPosts = () => {
   const [posts, setPosts] = useState([]);
-  //const {token} = useContext(AuthContext)
-
+  const [value, setValue] = useState('');
+  const [isEdit, setIsEdit] = useState(false)
+  
   const getPosts = async () => {
-    const { data } = await axios({
+    const info = await axios({
       url: "http://localhost:5000/api/posts",
       method: "GET",
-      data: {
-        id: "61e906356354c583e77e58d2",
-      },
     });
-    setPosts(data);
+    setPosts(info.data);
   };
+
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [isEdit]);
 
-  const addPost = async (title, descText) => {
-    const { body } = await axios({
+   const addPost = async () => {
+    await axios({
       url: "http://localhost:5000/api/posts",
       method: "POST",
-      body: JSON.stringify({
-        title: title,
-        descText: descText,
-      }),
-      /* if (response.ok === true) {
-      const user = await response.json();
-      reset();
-  } */
+      data: {
+          descText: value,
+     },
     });
-    setPosts(body);
+    setIsEdit(!isEdit)
+    console.log(value);
   };
-  useEffect(() => {
-    addPost();
-  }, []);
- 
 
-/*// Удаление пользователя
-async function DeleteUser(id) {
-    const response = await fetch("/api/users/" + id, {
-        method: "DELETE",
-        headers: { "Accept": "application/json" }
-    });
-    if (response.ok === true) {
-        const user = await response.json();
-        document.querySelector("tr[data-rowid='" + user._id + "']").remove();
-    }
-} */
+  const addValue = (e) => setValue(e.target.value);
 
-  
-
-  const postsElements = posts.map((p) => (
-    <Post key={p.postId} title={p.title} message={p.descText} />
+  const postsElements = posts.map((p) => ( 
+    <Post key={p.id} message={p.descText} />
   ));
-  const newPostElement = React.createRef();
 
- /*  const addPost = () => {
-    const postMessage = newPostElement.current.value;
-    alert(postMessage);
-  }; */
 
-  console.log("посты", posts);
+  //console.log("посты", posts);
 
   return (
     <div className={classes.main}>
@@ -74,7 +48,8 @@ async function DeleteUser(id) {
         <div>
           <textarea
             className={classes.textarea}
-            ref={newPostElement}
+            value={value} 
+            onChange={addValue}
             placeholder="Добавь новый пост..."
           ></textarea>
         </div>
@@ -97,36 +72,3 @@ async function DeleteUser(id) {
 };
 
 export default MyPosts;
-
-/* {postsElements}
-          <input value={value} onChange={inputValue} />
-          <div>
-            <input onClick={addPost} />
-            Добавить элемент
-          </div> */
-
-
-          /* const [ arr,   setArr] = useState({});
-  const [value, setValue] = useState(""); */
-
-   /* const addPost = async () => {
-    const { data } = await axios({
-      url: "http://localhost:5000/api/posts",
-      method: "POST",
-      data: {
-        postId: "",
-        title: "",
-        descText: "",
-      },
-    });
-    setArr(data);
-  }; 
-  useEffect(() => {
-    addPost();
-  }, []); */
-
-
-  /* const inputValue = (event) => {
-    const postMessage = setValue(event.target.value);
-    alert(postMessage);
-  }; */

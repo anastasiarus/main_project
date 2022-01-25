@@ -8,3 +8,23 @@
     height: 40px;
     border-radius: 30px;
   } 
+
+  .btn {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 8px;
+    padding: 5px 5px;
+    border: 1px solid #F896A6;
+    border-radius: 8px;
+    box-shadow: 0 0 40px 40px #F896A6 inset, 0 0 0 0 #F896A6;
+    color: white;
+    transition: .15s ease-in-out; 
+  }
+
+  .like {
+    display: inline;
+  }
+
+  .count {
+    margin-right: 15px;
+  }
