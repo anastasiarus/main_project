@@ -6,7 +6,7 @@ import axios from "axios";
 const MyPosts = () => {
   const [posts, setPosts] = useState([]);
   const [value, setValue] = useState('');
-  const [isEdit, setIsEdit] = useState(false)
+ const [isEdit, setIsEdit] = useState(false)
   
   const getPosts = async () => {
     const info = await axios({
@@ -25,6 +25,7 @@ const MyPosts = () => {
       url: "http://localhost:5000/api/posts",
       method: "POST",
       data: {
+          id: Date.now(),
           descText: value,
      },
     });
@@ -32,10 +33,13 @@ const MyPosts = () => {
     console.log(value);
   };
 
+
+  const updateEdit = () => setIsEdit(!isEdit)
+
   const addValue = (e) => setValue(e.target.value);
 
   const postsElements = posts.map((p) => ( 
-    <Post key={p.id} message={p.descText} />
+    <Post key={p.id} message={p.descText} id={p.id} isEdit={isEdit} update={updateEdit} />
   ));
 
 
@@ -65,7 +69,7 @@ const MyPosts = () => {
           <p className={classes.emptyArr}>У вас нет постов, но вы можете добавить новый</p>
         </div>
       ) : (
-        <div className={classes.posts}>{postsElements}</div>
+        <div className={classes.posts}>{postsElements} </div>
       )}
     </div>
   );

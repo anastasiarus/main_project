@@ -42,19 +42,3 @@ const ProfileStatus = () => {
 }
 
 export default ProfileStatus;
-
-  /*   const useStatusField = (initialValue) => {
-      const [value, setValue] = useState(initialValue)
-      const onChange = e => setValue(e.target.value)
-      return { value, onChange }
-    }
-
-    const statusField = useStatusField()
-
-    return (
-        <div className={classes.main}>
-                <div>
-                    <input className={classes.status} placeholder="Обнови статус..." type='text' {...statusField} />
-                </div>
-        </div>
-    ) */

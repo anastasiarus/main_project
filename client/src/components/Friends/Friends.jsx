@@ -10,7 +10,7 @@ const Friends = () => {
       url: "http://localhost:5000/api/friends",
       method: "GET",
       /* data: {
-        id: "61e906356354c583e77e58d2",
+        id: "61f12d369da960ccde66b9e9",
       }, */
     });
     setFriends(data);
@@ -35,7 +35,7 @@ const Friends = () => {
   }, []); 
  */
    
-  console.log("друзья", friends);
+  //console.log("друзья", friends);
 
   return (
     <div className={classes.main}>

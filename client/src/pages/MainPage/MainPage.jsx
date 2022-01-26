@@ -23,6 +23,7 @@ export const MainPage = () => {
           <Route  path="/posts"  element={<MyPosts />}/>
           <Route  path="/music"  element={<Music />}/>
           <Route  path="/setting"  element={<Setting />}/>
+          <Route  path="*" element={<Profile />} />
         </Routes> 
       </div>
       </div> 

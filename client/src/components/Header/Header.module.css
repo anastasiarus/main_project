@@ -22,3 +22,8 @@
     color: white;
     text-decoration: none;
   }
+
+  .title {
+    margin-top: 10px;
+    margin-left: 15px;
+  }
