@@ -16,7 +16,7 @@ const Profile = () => {
       url: "http://localhost:5000/api/profile",
       method: "POST",
       data: {
-        id: "61f12d369da960ccde66b9e9",
+        id: "61f2732e256bd2ac8b9158b5",
       },
       //Authorization: `Bearer ${token}`
     });
@@ -32,13 +32,15 @@ const Profile = () => {
   const sendFile = useCallback(async() => {
     try{
       const data = new FormData()
+     // console.log('data', data)
       data.append('ava', img)
       await axios({
         url: "http://localhost:5000/api/apload",
         method: "POST",
-        data: {
-          //id: "61f12d369da960ccde66b9e9",
-        },
+        data
+        /* data: {
+          id: "61f2732e256bd2ac8b9158b5",
+        }, */
       })
       .then(res => setAva(res.data.path))
     } catch(e){
@@ -55,7 +57,7 @@ const Profile = () => {
         ? <img className={classes.ava} src={ava} alt="" /> 
         : <img className={classes.ava} src={avatar} alt="" /> 
       }
-      <input className={classes.inputAva} type="file" onChange={e => setImg(e.target.files[0])}/>
+      <input className={classes.inputAva} type="file" name="ava" onChange={e => setImg(e.target.files[0])}/>
       <button className={classes.btn} onClick={sendFile}>Изменить аватар</button>
       </div>
       <p className={classes.name} >{`${profile.firstName} ${profile.lastName}`}</p>

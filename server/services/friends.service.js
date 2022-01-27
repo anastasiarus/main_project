@@ -3,7 +3,7 @@ const User = require('../models/users')
 class FriendsService {
 
 
-  async getAllUsers() {
+  async getFriends() {
     //console.log(id)
     const user = await User.find();
     if (!user) {
@@ -12,7 +12,14 @@ class FriendsService {
     return user;
   }
 
-  async getFriends(id) {
+  async deleteFriends (id) {
+    await User.deleteOne({id})
+    console.log("ИД", id)
+    console.log('удален')
+  }
+
+
+ /*  async getFriends(id) {
     //console.log(id)
     const user = await User.findById(id);
     if (!user) {
@@ -53,7 +60,7 @@ class FriendsService {
     const friendsArray = await User.updateOne({ friends: userFriends })
     console.log('Друг удален')
     return friendsArray;
-  }
+  } */
 }
 
 module.exports = FriendsService 

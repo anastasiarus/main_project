@@ -24,7 +24,7 @@ const Friends = () => {
       url: "http://localhost:5000/api/friends",
       method: "POST",
       data: {
-        id: "61e906356354c583e77e58d2",
+        id: "61f2732e256bd2ac8b9158b5",
       },
     });
     //alert(response.data.message)

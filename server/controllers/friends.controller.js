@@ -8,9 +8,9 @@ class FriendsController {
     this.service = new FriendsService();
   }
 
-  async getAllUsers(req, res) {
+  async getFriends(req, res) {
     try {
-      const users = await this.service.getAllUsers(req.body);
+      const users = await this.service.getFriends(req.body);
       return res.status(200).json(users);
     } catch (e) {
       console.log(e);
@@ -18,13 +18,23 @@ class FriendsController {
     return null;
   }
 
-  async getFriends(req, res) {
+  async deleteFriends(req,res) {
     try {
-      //console.log(req)
-      //const id = req.body;
-      /* if (!id) {
+      const {id} = req.body
+      const userFriend = await this.service.deleteFriends(id)
+      return res.status(200).json(userFriend)
+    } catch(e) {
+      console.log(e)
+    }
+  } 
+
+ /*  async getFriends(req, res) {
+    try {
+      console.log(req)
+      const id = req.body;
+       if (!id) {
         throw new Error( 'Что-то пошло не так')
-      } */
+      } 
       const userInfo = await this.service.getFriends(req.body.id);
       return res.status(200).json(userInfo);
     } catch (e) {
@@ -51,7 +61,7 @@ class FriendsController {
       console.log(e);
     }
     return null;
-  } 
+  }  */
 
 }
 module.exports = FriendsController

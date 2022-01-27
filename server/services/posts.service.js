@@ -19,7 +19,6 @@ class PostsService {
 
   async deletePosts (id) {
     await Post.deleteOne({id})
-    console.log("ИД", id)
     console.log('Пост удален')
   }
 } 

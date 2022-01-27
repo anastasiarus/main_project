@@ -1,33 +1,36 @@
 const {Router} = require('express')
-const fileMiddleware = require('../middlewares/upload.middleware');
-//const User = require('../models/users');
+const upload = require('../middlewares/upload.middleware')
+const User = require('../models/users');
 
 const uploadRouter = Router();
 
-uploadRouter.post('/', fileMiddleware.single('ava'), async (req, res) => {
+uploadRouter.post('/', upload.single('ava'), async (req, res) => {
     try {
-        if(req.file) {
-            res.json(req.file)
+        console.log('file', req.file)
+        console.log('body',req.body)
+        if (req.file) {
+            const {id} = req.body
+            await User.findByIdAndUpdate(id, {ava: req.file.filename})
+            res.status(200).json(req.file)
         } else {
             console.log('файл не загрузился')
         }
-    } catch(e) {
+    } catch (e) {
         console.log(e)
     }
 });
 
-module.exports = uploadRouter; 
+module.exports = uploadRouter;
 
 
 
 /* try {
-    if(req.file) {
-        const {id} = req.body
-        await User.findOneAndUpdate({_id: id}, {ava: req.file.filename})
+    if (req.file) {
+        res.json({ava: req.file.path})
         res.json(req.file)
-    } else {
-        console.log('файл не загрузился')
-    }
+        } else {
+            console.log('файл не загрузился')
+        }
 } catch(e) {
     console.log(e)
 } */
