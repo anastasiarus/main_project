@@ -28,6 +28,16 @@ class FriendsController {
     }
   } 
 
+  /* async addFriends(req, res) {
+    try{
+      const {id} = req.body
+      const userFriend= await this.service.addFriends(id)
+      return res.status(200).json(userFriend)
+    } catch(e){
+      console.log(e)
+    }
+  } */
+
  /*  async getFriends(req, res) {
     try {
       console.log(req)

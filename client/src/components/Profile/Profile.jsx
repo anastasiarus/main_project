@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback} from "react";
 import classes from "./Profile.module.css";
 //import {AuthContext} from "../../context/AuthContext"
 import axios from "axios";
-import avatar from "../../images/users.png";
+import picture from "../../images/users.png";
 import ProfileStatus from "./ProfileStatus";
 
 const Profile = () => {
@@ -32,15 +32,16 @@ const Profile = () => {
   const sendFile = useCallback(async() => {
     try{
       const data = new FormData()
-     // console.log('data', data)
+      //console.log('img', img)
+      //console.log('data', data)
       data.append('ava', img)
       await axios({
-        url: "http://localhost:5000/api/apload",
+        url: "http://localhost:5000/api/upload",
         method: "POST",
         data
-        /* data: {
+        /*data: {
           id: "61f2732e256bd2ac8b9158b5",
-        }, */
+        },*/
       })
       .then(res => setAva(res.data.path))
     } catch(e){
@@ -55,7 +56,7 @@ const Profile = () => {
       {
         ava 
         ? <img className={classes.ava} src={ava} alt="" /> 
-        : <img className={classes.ava} src={avatar} alt="" /> 
+        : <img className={classes.ava} src={picture} alt="" /> 
       }
       <input className={classes.inputAva} type="file" name="ava" onChange={e => setImg(e.target.files[0])}/>
       <button className={classes.btn} onClick={sendFile}>Изменить аватар</button>
@@ -63,7 +64,6 @@ const Profile = () => {
       <p className={classes.name} >{`${profile.firstName} ${profile.lastName}`}</p>
       <p className={classes.email} >{` Вы можете написать мне сюда: ${profile.email}`}</p>
       <ProfileStatus />
-    
     </div>
   );
 };

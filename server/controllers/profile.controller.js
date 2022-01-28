@@ -3,11 +3,10 @@ const ProfileService  = require ("../services/profile.service");
 class ProfileController {
 
   service;
-
   constructor() {
     this.service = new ProfileService();
   }
-
+  
   async getProfileInfo(req, res) {
     try {
       //console.log(req)
