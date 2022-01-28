@@ -1,4 +1,31 @@
 .main {
     margin-top: 10px;
     margin-left: 10px;
+    display: grid;
+    grid-template-columns: 5fr 10fr;
+}
+
+
+.dialogs{
+    padding: 10px;
+} 
+
+.item {
+    padding: 10px;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.message {
+    padding: 10px;
+   /*  margin: 5px; */
+    color: white;
+}
+
+.friends {
+    color: white;
+    list-style-type: none;
+    margin: 5px;
 }
