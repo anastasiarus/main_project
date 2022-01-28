@@ -61,9 +61,11 @@ const Profile = () => {
       <input className={classes.inputAva} type="file" name="ava" onChange={e => setImg(e.target.files[0])}/>
       <button className={classes.btn} onClick={sendFile}>Изменить аватар</button>
       </div>
+      <div className={classes.info}>
       <p className={classes.name} >{`${profile.firstName} ${profile.lastName}`}</p>
       <p className={classes.email} >{` Вы можете написать мне сюда: ${profile.email}`}</p>
       <ProfileStatus />
+      </div>
     </div>
   );
 };
