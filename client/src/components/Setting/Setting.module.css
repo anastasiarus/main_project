@@ -1,10 +1,10 @@
 .main {
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .string {
-     margin-left: 10px; 
+    margin-left: 10px; 
     color: white;
     display: inline-block;
 }

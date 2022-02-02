@@ -26,14 +26,15 @@ const Profile = () => {
     getProfileInfo();
   }, []);
 
+  useEffect(() => {      
+    document.title = `Профиль`;  
+  });
+
   //console.log(token)
-  //console.log('данные', profile)
 
   const sendFile = useCallback(async() => {
     try{
       const data = new FormData()
-      //console.log('img', img)
-      //console.log('data', data)
       data.append('ava', img)
       await axios({
         url: "http://localhost:5000/api/upload",

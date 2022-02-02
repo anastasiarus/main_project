@@ -18,6 +18,11 @@ export const AuthPage = () => {
     clearError()
   }, [error, message, clearError])
 
+  useEffect(() => {      
+    document.title = `Авторизация`;  
+  });
+
+
   const changeHandler = event => {
     setForm({ ...form, [event.target.name]: event.target.value })
   }

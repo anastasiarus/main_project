@@ -5,9 +5,9 @@ import axios from "axios";
 
 const MyPosts = () => {
   const [posts, setPosts] = useState([]);
-  const [value, setValue] = useState('');
- const [isEdit, setIsEdit] = useState(false)
-  
+  const [value, setValue] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
+
   const getPosts = async () => {
     const info = await axios({
       url: "http://localhost:5000/api/posts",
@@ -20,30 +20,36 @@ const MyPosts = () => {
     getPosts();
   }, [isEdit]);
 
-   const addPost = async () => {
+  const addPost = async () => {
     await axios({
       url: "http://localhost:5000/api/posts",
       method: "POST",
       data: {
-          id: Date.now(),
-          descText: value,
-     },
+        id: Date.now(),
+        descText: value,
+      },
     });
-    setIsEdit(!isEdit)
+    setIsEdit(!isEdit);
     console.log(value);
   };
 
-
-  const updateEdit = () => setIsEdit(!isEdit)
+  const updateEdit = () => setIsEdit(!isEdit);
 
   const addValue = (e) => setValue(e.target.value);
 
-  const postsElements = posts.map((p) => ( 
-    <Post key={p.id} message={p.descText} id={p.id} isEdit={isEdit} update={updateEdit} />
+  const postsElements = posts.map((p) => (
+    <Post
+      key={p.id}
+      message={p.descText}
+      id={p.id}
+      isEdit={isEdit}
+      update={updateEdit}
+    />
   ));
 
-
-  //console.log("посты", posts);
+  useEffect(() => {      
+    document.title = `Посты`;  
+  });
 
   return (
     <div className={classes.main}>
@@ -52,7 +58,7 @@ const MyPosts = () => {
         <div>
           <textarea
             className={classes.textarea}
-            value={value} 
+            value={value}
             onChange={addValue}
             placeholder="Добавь новый пост..."
           ></textarea>
@@ -66,10 +72,12 @@ const MyPosts = () => {
       </div>
       {posts.length == 0 ? (
         <div>
-          <p className={classes.emptyArr}>У вас нет постов, но вы можете добавить новый</p>
+          <p className={classes.emptyArr}>
+            У вас нет постов, но вы можете добавить новый
+          </p>
         </div>
       ) : (
-        <div className={classes.posts}>{postsElements} </div>
+        <div className={classes.posts}>{postsElements}</div>
       )}
     </div>
   );

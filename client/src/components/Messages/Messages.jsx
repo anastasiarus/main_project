@@ -18,6 +18,10 @@ const Messages = () =>{
     getFriends();
   }, []);
 
+  useEffect(() => {      
+    document.title = `Сообщения`;  
+  });
+
     return (
     <div className={classes.main}>
        <div className={classes.dialogs}>

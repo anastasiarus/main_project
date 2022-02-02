@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import classes from './Setting.module.css'
 
 
 const Setting = () =>{
+
+    useEffect(() => {      
+        document.title = `Настройки`;  
+      });
+
     return (
     <div className={classes.main}>
         <div><img className={classes.icon} src="https://img.icons8.com/ios-glyphs/344/ffffff/paint-palette--v1.png"/><p className={classes.string}>Внешний вид</p></div>

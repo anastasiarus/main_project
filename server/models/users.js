@@ -6,7 +6,7 @@ const schema = new Schema({
     firstName: { type: String, allowNull: false},
     lastName: { type: String, allowNull: false},
     ava: [{type: String, allowNull: true}],
-    friends: [{type: Types.ObjectId, ref: 'Friends'}],
+    friends: [{type: Types.ObjectId}],
     posts: [{type: Types.ObjectId, ref: 'Posts'}],
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true}
